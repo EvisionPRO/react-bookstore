@@ -1,0 +1,15 @@
+#app {
+  font-size: 14px;
+  color: #767676;
+  min-width: 550px;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+a.active {
+  color: orange;
+}
+
+nav {
+  padding-top: 20px;
+}
