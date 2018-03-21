@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import {Link} from 'react-router';
 
 class HomePage extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.state = {
-      number: '0'
+      number: 0
     };
     // this.IncrementNumber = this.IncrementItem.bind(this);
     // this.DecreaseNumber = this.DecreaseItem.bind(this);
@@ -14,11 +14,12 @@ class HomePage extends React.Component {
 
   IncrementNumber() {
     const number = this.state.number + 1;
-    this.setState({ number: number});
+    this.setState({ number: number });
   }
   DecreaseNumber() {
-    console.log('jarek', this.state.number);
-    this.setState({ number: this.state.number - 1 });
+    // console.log('jarek', this.state.number);
+    const number = this.state.number - 1
+    this.setState({ number: number });
   }
 
   render() {
@@ -31,9 +32,9 @@ class HomePage extends React.Component {
           <Link to="about" className="btn btn-primary btn-lg">Learn More</Link>
         </div>
         <div className="flexcontainer">
-          <i className="btn btn-primary" onClick={this.DecreaseNumber}>-</i>
+          <i className="btn btn-primary" onClick={this.DecreaseNumber.bind(this)}>-</i>
           <h3>{this.state.number}</h3>
-          <i className="btn btn-primary" onClick={this.IncrementNumber}>+</i>
+          <i className="btn btn-primary" onClick={this.IncrementNumber.bind(this)}>+</i>
         </div>
       </div>
     );
