@@ -13,3 +13,14 @@ a.active {
 nav {
   padding-top: 20px;
 }
+
+.flexcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h3 {
+  padding: 0 5px;
+  margin: 0 !important;
+}
