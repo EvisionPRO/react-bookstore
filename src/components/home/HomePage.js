@@ -8,8 +8,8 @@ class HomePage extends React.Component {
     this.state = {
       number: 0
     };
-    // this.IncrementNumber = this.IncrementItem.bind(this);
-    // this.DecreaseNumber = this.DecreaseItem.bind(this);
+    this.IncrementNumber = this.IncrementNumber.bind(this);
+    this.DecreaseNumber = this.DecreaseNumber.bind(this);
   }
 
   IncrementNumber() {
@@ -18,7 +18,7 @@ class HomePage extends React.Component {
   }
   DecreaseNumber() {
     // console.log('jarek', this.state.number);
-    const number = this.state.number - 1
+    const number = this.state.number - 1;
     this.setState({ number: number });
   }
 
@@ -32,9 +32,9 @@ class HomePage extends React.Component {
           <Link to="about" className="btn btn-primary btn-lg">Learn More</Link>
         </div>
         <div className="flexcontainer">
-          <i className="btn btn-primary" onClick={this.DecreaseNumber.bind(this)}>-</i>
+          <i className="btn btn-primary" onClick={this.DecreaseNumber}>-</i>
           <h3>{this.state.number}</h3>
-          <i className="btn btn-primary" onClick={this.IncrementNumber.bind(this)}>+</i>
+          <i className="btn btn-primary" onClick={this.IncrementNumber}>+</i>
         </div>
       </div>
     );
