@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import * as bookAction from '../../actions/bookActions';
 
 class BooksList extends React.Component {
   constructor(props, context) {
@@ -20,14 +22,20 @@ class BooksList extends React.Component {
   }
 
   onClickSave() {
-    alert(`Saving ${this.state.books.title}`);
+    this.props.dispatch(bookAction.addBook(this.state.books));
+  }
+
+  bookRow(book, index) {
+    return <div key={index}>{book.title}</div>;
   }
 
   render() {
+    debugger;
     return (
       <div>
         <h1>Books</h1>
-        <h2>Add Course</h2>
+        {this.props.books.map(this.bookRow)}
+        <h2>Add Book</h2>
 
         <input
           type="text"
@@ -44,4 +52,16 @@ class BooksList extends React.Component {
   }
 }
 
-export default BooksList;
+BooksList.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  books: PropTypes.array.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+  debugger;
+  return {
+    books: state.books
+  };
+}
+
+export default connect(mapStateToProps)(BooksList);
