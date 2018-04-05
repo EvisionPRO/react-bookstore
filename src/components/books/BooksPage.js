@@ -22,7 +22,7 @@ class BooksList extends React.Component {
   }
 
   onClickSave() {
-    this.props.dispatch(bookAction.addBook(this.state.books));
+    this.props.addBook(this.state.books);
   }
 
   bookRow(book, index) {
@@ -30,7 +30,6 @@ class BooksList extends React.Component {
   }
 
   render() {
-    debugger;
     return (
       <div>
         <h1>Books</h1>
@@ -53,15 +52,21 @@ class BooksList extends React.Component {
 }
 
 BooksList.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  books: PropTypes.array.isRequired
+  // dispatch: PropTypes.func.isRequired,
+  books: PropTypes.array.isRequired,
+  addBook: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
-  debugger;
   return {
     books: state.books
   };
 }
 
-export default connect(mapStateToProps)(BooksList);
+function mapDispatchToProps(dispatch) {
+  return {
+    addBook: books => dispatch(bookAction.addBook(books))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BooksList);
